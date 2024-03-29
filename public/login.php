@@ -16,7 +16,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if ($user && password_verify($password, $user['password'])) {
         session_start();
         $_SESSION['user_id'] = $user['id'];
-        header('Location: ./../src/views/user/dashboard.php');
+
+        // Vérifier si l'utilisateur est un administrateur.
+        if ($user['is_admin']) {
+            header('Location: ./../src/views/admin/dashboard.php');
+        } else {
+            header('Location: ./../src/views/user/dashboard.php');
+        }
     } else {
         $message = 'Mauvais identifiants';
     }
