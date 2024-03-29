@@ -51,7 +51,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="dashboard-container">
         <h2>Bienvenue sur votre tableau de bord</h2>
         <p>Vous pouvez maintenant accéder à toutes les fonctionnalités réservées à nos utilisateurs inscrits.</p>
-        <a href="logout.php">Se déconnecter</a>
+        <a href="./../../../public/logout.php">Se déconnecter</a>
     </div>
 </body>
 </html>
