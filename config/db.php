@@ -2,7 +2,7 @@
 
 $db_host = 'localhost';
 $db_port = '3306';
-$db_dbname   = 'db1';
+$db_name   = 'db1';
 $db_charset = 'utf8mb4';
 $db_username = 'root';
 $db_password = '';
