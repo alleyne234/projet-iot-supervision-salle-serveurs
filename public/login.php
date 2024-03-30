@@ -36,88 +36,54 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .login-container {
-            max-width: 400px;
-            margin: 100px auto;
-            background-color: #fff;
-            padding: 20px 30px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h2 {
-            margin-top: 0;
-            color: #333;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-        }
-
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        p {
-            color: red;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="icon" href="./../public/img/key-solid.svg">
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="login-container">
-        <h2>Connexion</h2>
-
-        <?php if (!empty($message)): ?>
-            <p style="color:red"><?= $message ?></p>
-        <?php endif; ?>
-
-        <form action="login.php" method="post">
-            <div>
-                <label for="username">Nom d'utilisateur:</label>
-                <input type="text" id="username" name="username">
-            </div>
-
-            <div>
-                <label for="password">Mot de passe:</label>
-                <input type="password" id="password" name="password">
-            </div>
-
-            <div>
-                <input type="submit" value="Se connecter">
-            </div>
-        </form>
+    <input type="checkbox" id="sidebar-toggle">
+    <label for="sidebar-toggle">
+        <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
+        <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
+    </label>
+    
+    <div class="sidebar">
+        <a href="./../index.php" class="active">
+            <i class="fa-solid fa-house"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="./../public/about-us.php">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>À Propos</span>
+        </a>
     </div>
+
+    <main>
+        <div class="login-container">
+            <h2>Connexion</h2>
+
+            <form action="login.php" method="post">
+                <div>
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" id="username" name="username" placeholder="username">
+                </div>
+                
+                <div>
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" placeholder="password">
+                </div>
+                
+                <div>
+                    <input type="submit" value="Se connecter">
+                </div>
+
+                <?php if (!empty($message)): ?>
+                    <p style="color:red"><?= $message ?></p>
+                <?php endif; ?>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
