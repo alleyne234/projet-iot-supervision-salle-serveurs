@@ -17,15 +17,15 @@
     </label>
     
     <div class="sidebar">
-        <a href="#" class="active">
+        <a href="./index.php" class="active">
             <i class="fa-solid fa-house"></i>
             <span>Accueil</span>
         </a>
-        <a href="#">
+        <a href="./public/login.php">
             <i class="fa-solid fa-key"></i>
             <span>Connexion</span>
         </a>
-        <a href="#">
+        <a href="./public/about-us.php">
             <i class="fa-solid fa-circle-info"></i>
             <span>À Propos</span>
         </a>
