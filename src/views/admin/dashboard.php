@@ -23,8 +23,8 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-<!-- Sidebar Toggle -->
-<input type="checkbox" id="sidebar-toggle">
+    <!-- Sidebar Toggle -->
+    <input type="checkbox" id="sidebar-toggle">
     <label for="sidebar-toggle">
         <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
         <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
@@ -35,6 +35,10 @@ if (!isset($_SESSION['user_id'])) {
         <a href="./../../../index.php" class="active">
             <i class="fa-solid fa-house"></i>
             <span>Accueil</span>
+        </a>
+        <a href="./register.php" class="active">
+        <i class="fa-regular fa-id-card"></i>
+            <span>Créer compte</span>
         </a>
         <a href="./../../../public/logout.php">
         <i class="fa-solid fa-right-from-bracket"></i>
