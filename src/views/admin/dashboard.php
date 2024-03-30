@@ -15,43 +15,32 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de bord Admin</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .dashboard-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px 30px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h2 {
-            color: #333;
-        }
-        p {
-            color: #555;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Tableau de bord - Administrateur</title>
+    <link rel="icon" href="./../../../public/img/gauge-solid.svg">
+    <link rel="stylesheet" href="./../../../public/css/default.css">
+    <link rel="stylesheet" href="./../../../public/css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="dashboard-container">
-        <h2>Bienvenue sur votre tableau de bord</h2>
-        <p>Vous pouvez maintenant accéder à toutes les fonctionnalités réservées à nos utilisateurs inscrits.</p>
-        <a href="./../../../public/logout.php">Se déconnecter</a>
+<input type="checkbox" id="sidebar-toggle">
+    <label for="sidebar-toggle">
+        <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
+        <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
+    </label>
+    
+    <div class="sidebar">
+        <a href="./../../../index.php" class="active">
+            <i class="fa-solid fa-house"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="./../../../public/logout.php">
+        <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Déconnexion</span>
+        </a>
     </div>
+
+    <main>
+    </main>
 </body>
 </html>
