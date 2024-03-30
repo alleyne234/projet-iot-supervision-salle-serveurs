@@ -4,32 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-
-    <style>
-        .buttons-container {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .btn {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="icon" href="./public/img/house-solid.svg">
+    <link rel="stylesheet" href="./public/css/default.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="buttons-container">
-        <a href="./public/login.php" class="btn">Se Connecter</a>
-        <a href="./public/register.php" class="btn">S'inscrire</a>
-        <a href="./src/views/user/dashboard.php" class="btn">Dashboard</a>
+    <input type="checkbox" id="sidebar-toggle">
+    <label for="sidebar-toggle">
+        <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
+        <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
+    </label>
+    
+    <div class="sidebar">
+        <a href="#" class="active">
+            <i class="fa-solid fa-house"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-key"></i>
+            <span>Connexion</span>
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>À Propos</span>
+        </a>
     </div>
+
+    <script src="./public/js/app.js"></script>
 </body>
 </html>

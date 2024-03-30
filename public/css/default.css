@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/**************** GLOBAL ****************/
+:root {
+    --black:#303133;
+    --gray:#3b3c3f;
+    --gray-div: #36373C;
+    --light-gray:#d9d9d9;
+    --white:#ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content : center;
+    background-color: var(--gray);
+}
+
+
+/**************** SIDEBAR ****************/
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 260px;
+    left: -260px;
+    padding-top: 260px;
+    transition: all .5s ease;
+    background-color: var(--black);
+}
+
+.sidebar a {
+    display: block;
+    height: 64px;
+    width: 100%;
+    color: var(--white);
+    line-height: 64px;
+    margin-bottom: 32px;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: all .3s ease;
+}
+
+.sidebar a:hover {
+    color: var(--gray);
+}
+
+.sidebar a i {
+    font-size: 24px;
+    margin-right: 16px;
+}
+
+.sidebar a span {
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Sidebar Toggle */
+#sidebar-toggle {
+    display: none;
+}
+
+label #sidebar-btn-open, label #sidebar-btn-close {
+    position: absolute;
+    z-index: 10;
+    height: 48px;
+    width: 48px;
+    top: 0;
+    left: 0;
+    margin: 24px;
+    cursor: pointer;
+    color: var(--gray);
+    border-radius: 5px;
+    font-size: 32px;
+    text-align: center;
+    line-height: 48px;
+    transition: all .5s ease;
+    background-color: var(--light-gray);
+}
+
+label #sidebar-btn-close {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#sidebar-toggle:checked ~ .sidebar {
+    left: 0;
+}
+
+#sidebar-toggle:checked ~ label #sidebar-btn-open {
+    margin-left: 236px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#sidebar-toggle:checked ~ label #sidebar-btn-close {
+    margin-left: 236px;
+    opacity: 1;
+    visibility: visible;
+}
