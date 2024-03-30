@@ -30,7 +30,5 @@
             <span>À Propos</span>
         </a>
     </div>
-
-    <script src="./public/js/app.js"></script>
 </body>
 </html>
