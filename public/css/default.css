@@ -70,7 +70,7 @@ body {
     display: none;
 }
 
-label #sidebar-btn-open, label #sidebar-btn-close {
+label #sidebar-btn-open, label #sidebar-btn-close, #back-button {
     position: absolute;
     z-index: 10;
     height: 48px;
@@ -107,4 +107,10 @@ label #sidebar-btn-close {
     margin-left: 236px;
     opacity: 1;
     visibility: visible;
+}
+
+
+/******** Back Button ********/
+#back-button {
+    border: 0;
 }
