@@ -26,41 +26,34 @@ const graph = new Chart(ctx, {
 
 
 function updateChart() {
-    var xhr = new XMLHttpRequest();
+    fetch('./../../models/get_data.php')
+        .then(response => {
+            // Vérification de la réponse de la requête
+            if (!response.ok) {
+                throw new Error('Erreur lors de la récupération des données : ' + response.status);
+            }
 
-    xhr.open('GET', './../../models/get_data.php', true);
+            // Transformation des données de la réponse en JSON si la réponse est ok
+            return response.json();
+        })
+        .then(data => {
+            let list_timestamp = [];
+            let list_humidities = [];
+            
+            // Récupération des données
+            for (let i = 9; i >= 0; i--) {
+                list_timestamp.push(data[i].horodatage);
+                list_humidities.push(data[i].humidite);
+            }
 
-    xhr.responseType = 'json';
-
-    xhr.onload = function() {
-    if(xhr.status === 200) {
-        let data = xhr.response;
-
-        let list_timestamp = [];
-
-        for (let i = 9; i >= 0; i--) {
-            list_timestamp.push(data[i].horodatage);
-        }
-
-        let list_humidities = [];
-
-        for (let i = 9; i >= 0; i--) {
-            list_humidities.push(data[i].humidite);
-        }
-
-        graph.data.labels = list_timestamp;
-        graph.data.datasets[0].data = list_humidities;
-        graph.update();
-    } else {
-        console.error('Erreur lors de la récupération des données : ' + xhr.status);
-    }
-    };
-
-    xhr.onerror = function() {
-    console.error('Erreur de connexion.');
-    };
-
-    xhr.send();
+            // Mise à jour du graphique
+            graph.data.labels = list_timestamp;
+            graph.data.datasets[0].data = list_humidities;
+            graph.update();
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération des données : ' + error.message);
+        });
 }
 
 updateChart();
