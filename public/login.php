@@ -1,5 +1,4 @@
 <?php
-
 include("./../config/db.php");
 
 $message = '';
@@ -9,7 +8,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     $sql = "SELECT * FROM users WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
+    $stmt = $dbh->prepare($sql);
     $stmt->execute(['username' => $username]);
     $user = $stmt->fetch();
 
@@ -27,7 +26,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $message = 'Mauvais identifiants';
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -43,13 +41,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 </head>
 
 <body>
-    <input type="checkbox" id="sidebar-toggle">
+        <input type="checkbox" id="sidebar-toggle">
     <label for="sidebar-toggle">
         <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
         <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
     </label>
     
-    <div class="sidebar">
+        <div class="sidebar">
         <a href="./../index.php" class="active">
             <i class="fa-solid fa-house"></i>
             <span>Accueil</span>
@@ -61,7 +59,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     </div>
 
     <main>
-        <div class="login-container">
+                <div class="login-container">
             <h2>Connexion</h2>
 
             <form action="login.php" method="post">

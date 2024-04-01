@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 // Vérifier si l'utilisateur est connecté
@@ -19,16 +18,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $is_admin = isset($_POST['is-admin']) ? 1 : 0;
 
     $sql = "INSERT INTO users (email, username, password, is_admin) VALUES (:email, :username, :password, :is_admin)";
-    $stmt = $pdo->prepare($sql);
+    $stmt = $dbh->prepare($sql);
     $result = $stmt->execute(['email' => $email, 'username' => $username, 'password' => $password, 'is_admin' => $is_admin]);
 
     if ($result) {
-        $message = '<p style="color:green">Inscription réussie !</p>';
+        $message = '<p style="color:green">Inscription réussie</p>';
     } else {
-        $message = '<p style="color:red">Erreur lors de l\'inscription.</p>';
+        $message = '<p style="color:red">Erreur lors de l\'inscription</p>';
     }
 }
-
 ?>
 
 <!DOCTYPE html>
