@@ -32,6 +32,7 @@ body {
     position: fixed;
     height: 100%;
     width: 260px;
+    top: 0;
     left: -260px;
     padding-top: 260px;
     transition: all .5s ease;

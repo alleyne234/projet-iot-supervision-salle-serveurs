@@ -15,6 +15,9 @@ h1 {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background-color: var(--gray-div);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .temperature-graph {
@@ -23,4 +26,28 @@ h1 {
 
 .humidity-graph {
     margin: 15px 0 30px 15px;
+}
+
+/**************** RESPONSIVE ****************/
+@media only screen and (max-width: 1100px) {
+    h1 {
+        line-height: 96px;
+        text-align: center;
+    }
+
+    body {
+        height: auto;
+    }
+
+    .graph-container {
+        display: block;
+    }
+
+    .graph {
+        width: 90vw;
+    }
+
+    .temperature-graph, .humidity-graph {
+        margin: 0 auto 30px auto;
+    }
 }
