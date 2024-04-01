@@ -41,22 +41,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 </head>
 
 <body>
-        <input type="checkbox" id="sidebar-toggle">
-    <label for="sidebar-toggle">
-        <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
-        <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
-    </label>
-    
-        <div class="sidebar">
-        <a href="./../index.php" class="active">
-            <i class="fa-solid fa-house"></i>
-            <span>Accueil</span>
-        </a>
-        <a href="./../public/about-us.php">
-            <i class="fa-solid fa-circle-info"></i>
-            <span>À Propos</span>
-        </a>
-    </div>
+    <!-- Back Button -->
+    <a href="./../index.php" id="back-button">
+        <i class="fa-solid fa-backward-step" id="sidebar-btn-open"></i>
+    </a>
 
     <main>
                 <div class="login-container">
