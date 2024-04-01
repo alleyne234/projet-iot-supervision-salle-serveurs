@@ -7,21 +7,9 @@ const graph = new Chart(ctx, {
         datasets: [{
             label: 'Température ',
             data: [],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
-            ],
+            backgroundColor: [],
             borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)'
+                'rgb(127, 127, 127, 0.5)'
             ],
             borderWidth: 1
         }]
@@ -32,11 +20,29 @@ const graph = new Chart(ctx, {
                 display: false
             },
             y: {
-                beginAtZero: false
+                beginAtZero: false,
+                grace: '5%'
             }
         }
     }
 });
+
+
+function getBackgroundColorForTemperature(temperature, minTemperature, maxTemperature) {
+    const colors = [
+        'rgba(54, 162, 235, 0.2)',  // Bleu
+        'rgba(75, 192, 192, 0.2)',  // Vert
+        'rgba(255, 205, 86, 0.2)',  // Jaune
+        'rgba(255, 159, 64, 0.2)',  // Orange
+        'rgba(255, 99, 132, 0.2)'   // Rouge
+    ];
+
+    const temperatureRange = maxTemperature - minTemperature;
+    const intervalSize = temperatureRange / colors.length + 0.001;
+    const intervalIndex = Math.floor((temperature - minTemperature) / intervalSize);
+
+    return colors[intervalIndex];
+}
 
 
 function updateChart() {
@@ -51,18 +57,34 @@ function updateChart() {
             return response.json();
         })
         .then(data => {
-            let list_timestamp = [];
-            let list_temperatures = [];
+            let listTimestamp = [];
+            let listTemperature = [];
+            let minTemperature = Infinity;
+            let maxTemperature = -Infinity;
+            let listBackgroundColor = [];
             
             // Récupération des données
             for (let i = 9; i >= 0; i--) {
-                list_timestamp.push(data[i].horodatage);
-                list_temperatures.push(data[i].temperature);
+                listTimestamp.push(data[i].horodatage);
+                listTemperature.push(data[i].temperature);
+
+                if (data[i].temperature < minTemperature) {
+                    minTemperature = data[i].temperature;
+                }
+
+                if (data[i].temperature > maxTemperature) {
+                    maxTemperature = data[i].temperature;
+                }
+            }
+
+            for (let i = 9; i >= 0; i--) {
+                listBackgroundColor.push(getBackgroundColorForTemperature(data[i].temperature, minTemperature, maxTemperature));
             }
 
             // Mise à jour du graphique
-            graph.data.labels = list_timestamp;
-            graph.data.datasets[0].data = list_temperatures;
+            graph.data.labels = listTimestamp;
+            graph.data.datasets[0].data = listTemperature;
+            graph.data.datasets[0].backgroundColor = listBackgroundColor;
             graph.update();
         })
         .catch(error => {

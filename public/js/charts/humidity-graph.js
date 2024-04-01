@@ -18,7 +18,8 @@ const graph = new Chart(ctx, {
                 display: false
             },
             y: {
-                beginAtZero: false
+                beginAtZero: false,
+                grace: '5%'
             }
         }
     }
@@ -37,18 +38,18 @@ function updateChart() {
             return response.json();
         })
         .then(data => {
-            let list_timestamp = [];
-            let list_humidities = [];
+            let listTimestamp = [];
+            let listHumidity = [];
             
             // Récupération des données
             for (let i = 9; i >= 0; i--) {
-                list_timestamp.push(data[i].horodatage);
-                list_humidities.push(data[i].humidite);
+                listTimestamp.push(data[i].horodatage);
+                listHumidity.push(data[i].humidite);
             }
 
             // Mise à jour du graphique
-            graph.data.labels = list_timestamp;
-            graph.data.datasets[0].data = list_humidities;
+            graph.data.labels = listTimestamp;
+            graph.data.datasets[0].data = listHumidity;
             graph.update();
         })
         .catch(error => {
