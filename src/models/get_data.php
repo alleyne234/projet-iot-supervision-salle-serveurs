@@ -1,7 +1,7 @@
 <?php
 include("./../../config/db.php");
 
-$sql = "SELECT id, temperature, humidite, horodatage FROM DHT11 ORDER BY id DESC LIMIT 60";
+$sql = "SELECT id, temperature, humidite, horodatage FROM dht11 ORDER BY id DESC LIMIT 60";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
