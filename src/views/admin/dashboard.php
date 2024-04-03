@@ -1,13 +1,11 @@
 <?php
-
 session_start();
 
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ./../../../public/login.php');
+// Vérifier si l'utilisateur est connecté et si il est administrateur
+if (!isset($_SESSION['user_id']) || !$_SESSION['user_is_admin']) {
+    header('Location: ./../../../index.php');
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>

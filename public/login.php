@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['username'];
+            $_SESSION['user_is_admin'] = $user['is_admin'];
 
             if ($user['is_admin']) {
                 // Redirection vers le tableau de bord de l'administrateur
