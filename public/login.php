@@ -1,29 +1,43 @@
 <?php
-include("./../config/db.php");
+// Inclusion du fichier de configuration de la base de données
+require_once('./../config/db.php');
 
-$message = '';
+// Message d'erreur par défaut
+$error_message = '';
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+// Vérification que la requête est une méthode POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Vérification de la présence des identifiants
+    if (!empty($_POST['username']) && !empty($_POST['password'])) {
+        $username = htmlspecialchars($_POST['username']);
 
-    $sql = "SELECT * FROM users WHERE username = :username";
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute(['username' => $username]);
-    $user = $stmt->fetch();
+        // Requête SQL
+        $sql = "SELECT * FROM users WHERE username = :username";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(['username' => $username]);
+        $user = $stmt->fetch();
+        
+        // Vérification de l'existence de l'utilisateur et de la correspondance du mot de passe
+        if ($user && password_verify($_POST['password'], $user['password'])) {
+            // Session
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['username'];
 
-    if ($user && password_verify($password, $user['password'])) {
-        session_start();
-        $_SESSION['user_id'] = $user['id'];
-
-        // Vérifier si l'utilisateur est un administrateur.
-        if ($user['is_admin']) {
-            header('Location: ./../src/views/admin/dashboard.php');
+            if ($user['is_admin']) {
+                // Redirection vers le tableau de bord de l'administrateur
+                header('Location: ./../src/views/admin/dashboard.php');
+                exit();
+            } else {
+                // Redirection vers le tableau de bord de l'utilisateur
+                header('Location: ./../src/views/user/dashboard.php');
+                exit();
+            }
         } else {
-            header('Location: ./../src/views/user/dashboard.php');
+            $error_message = "Mauvais identifiants";
         }
     } else {
-        $message = 'Mauvais identifiants';
+        $error_message = "Veuillez saisir un nom d\'utilisateur et un mot de passe.";
     }
 }
 ?>
@@ -65,8 +79,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     <input type="submit" value="Se connecter">
                 </div>
 
-                <?php if (!empty($message)): ?>
-                    <p style="color:red"><?= $message ?></p>
+                <?php if (!empty($error_message)): ?>
+                    <p style="color:red"><?= $error_message ?></p>
                 <?php endif; ?>
             </form>
         </div>
