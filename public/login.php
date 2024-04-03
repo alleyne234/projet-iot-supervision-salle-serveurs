@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Inclusion du fichier de configuration de la base de données
 require_once('./../config/db.php');
 
@@ -20,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Vérification de l'existence de l'utilisateur et de la correspondance du mot de passe
         if ($user && password_verify($_POST['password'], $user['password'])) {
             // Session
-            session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['username'];
             $_SESSION['user_is_admin'] = $user['is_admin'];
@@ -56,10 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <!-- Back Button -->
-    <a href="./../index.php" id="back-button">
-        <i class="fa-solid fa-backward-step" id="sidebar-btn-open"></i>
-    </a>
+    <!-- Sidebar -->
+    <?php
+    include("./../src/includes/sidebar.php");
+    ?>
 
     <main>
                 <div class="login-container">

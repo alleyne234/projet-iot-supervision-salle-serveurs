@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,25 +14,9 @@
 </head>
 
 <body>
-    <input type="checkbox" id="sidebar-toggle">
-    <label for="sidebar-toggle">
-        <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
-        <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
-    </label>
-    
-    <div class="sidebar">
-        <a href="./index.php" class="active">
-            <i class="fa-solid fa-house"></i>
-            <span>Accueil</span>
-        </a>
-        <a href="./public/login.php">
-            <i class="fa-solid fa-key"></i>
-            <span>Connexion</span>
-        </a>
-        <a href="./public/about-us.php">
-            <i class="fa-solid fa-circle-info"></i>
-            <span>À Propos</span>
-        </a>
-    </div>
+    <!-- Sidebar -->
+    <?php
+    include("./src/includes/sidebar.php");
+    ?>
 </body>
 </html>

@@ -75,10 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <!-- Back Button -->
-    <a href="./dashboard.php" id="back-button">
-        <i class="fa-solid fa-backward-step" id="sidebar-btn-open"></i>
-    </a>
+    <!-- Sidebar -->
+    <?php
+    include("./../../includes/sidebar.php");
+    ?>
 
     <main>
         <div class="register-container">

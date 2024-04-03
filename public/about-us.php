@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,9 +14,9 @@
 </head>
 
 <body>
-    <!-- Back Button -->
-    <a href="./../index.php" id="back-button">
-        <i class="fa-solid fa-backward-step" id="sidebar-btn-open"></i>
-    </a>
+    <!-- Sidebar -->
+    <?php
+    include("./../src/includes/sidebar.php");
+    ?>
 </body>
 </html>
