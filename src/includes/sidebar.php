@@ -3,8 +3,23 @@ $root_folder_name = 'projet-iot-supervision-salle-serveurs/';
 $page_name = basename($_SERVER['PHP_SELF']);
 ?>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let sidebarState = localStorage.getItem("sidebar-toggle");
+    
+    if (sidebarState !== null) {
+        document.getElementById("sidebar-toggle").checked = sidebarState === "true";
+    }
+});
+
+function saveState() {
+    let checkbox = document.getElementById("sidebar-toggle");
+    localStorage.setItem("sidebar-toggle", checkbox.checked.toString());
+}
+</script>
+
 <!-- Sidebar Toggle -->
-<input type="checkbox" id="sidebar-toggle">
+<input type="checkbox" id="sidebar-toggle" onClick="saveState()">
 <label for="sidebar-toggle">
     <i class="fa-solid fa-bars" id="sidebar-btn-open"></i>
     <i class="fa-solid fa-xmark" id="sidebar-btn-close"></i>
