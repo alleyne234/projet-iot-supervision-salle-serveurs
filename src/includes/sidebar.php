@@ -36,7 +36,7 @@ function saveState() {
 
     <!-- Register -->
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_is_admin']): ?>
-        <a href="/<?php echo $root_folder_name ?>src/views/admin/register.php"
+        <a href="/<?php echo $root_folder_name ?>src/views/register.php"
         <?php if ($page_name == "register.php") echo 'class="active-page"'; ?>>
         <i class="fa-regular fa-id-card"></i>
             <span>Créer compte</span>
@@ -45,8 +45,7 @@ function saveState() {
 
     <!-- Dashboard -->
     <?php if (isset($_SESSION['user_id'])): ?>
-        <?php $dashboard_path = $_SESSION['user_is_admin'] ? 'src/views/admin/dashboard.php' : 'src/views/user/dashboard.php'; ?>
-        <a href="/<?php echo $root_folder_name . $dashboard_path; ?>"
+        <a href="/<?php echo $root_folder_name ?>src/views/dashboard.php"
         <?php if ($page_name == "dashboard.php") echo 'class="active-page"'; ?>>
             <i class="fa-solid fa-circle-info"></i>
             <span>Dashboard</span>
@@ -55,7 +54,7 @@ function saveState() {
 
     <!-- Login -->
     <?php if (!isset($_SESSION['user_id'])): ?>
-        <a href="/<?php echo $root_folder_name ?>public/login.php"
+        <a href="/<?php echo $root_folder_name ?>src/views/login.php"
         <?php if ($page_name == "login.php") echo 'class="active-page"'; ?>>
             <i class="fa-solid fa-key"></i>
             <span>Connexion</span>
@@ -64,7 +63,7 @@ function saveState() {
 
     <!-- Logout -->
     <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="/<?php echo $root_folder_name ?>public/logout.php"
+        <a href="/<?php echo $root_folder_name ?>src/views/logout.php"
         <?php if ($page_name == "logout.php") echo 'class="active-page"'; ?>>
             <i class="fa-solid fa-right-from-bracket"></i>
             <span>Déconnexion</span>
@@ -72,7 +71,7 @@ function saveState() {
     <?php endif; ?>
 
     <!-- About us -->
-    <a href="/<?php echo $root_folder_name ?>public/about-us.php"
+    <a href="/<?php echo $root_folder_name ?>src/views/about-us.php"
     <?php if ($page_name == "about-us.php") echo 'class="active-page"'; ?>>
         <i class="fa-solid fa-circle-info"></i>
         <span>À Propos</span>

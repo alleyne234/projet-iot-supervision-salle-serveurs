@@ -2,7 +2,7 @@
 session_start();
 
 // Inclusion du fichier de configuration de la base de données
-require_once('./../config/db.php');
+require_once('./../../config/db.php');
 
 // Message d'erreur par défaut
 $error_message = '';
@@ -26,15 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_name'] = $user['username'];
             $_SESSION['user_is_admin'] = $user['is_admin'];
 
-            if ($user['is_admin']) {
-                // Redirection vers le tableau de bord de l'administrateur
-                header('Location: ./../src/views/admin/dashboard.php');
-                exit();
-            } else {
-                // Redirection vers le tableau de bord de l'utilisateur
-                header('Location: ./../src/views/user/dashboard.php');
-                exit();
-            }
+            // Redirection vers le tableau de bord
+            header('Location: ./dashboard.php');
+            exit();
         } else {
             $error_message = "Mauvais identifiants";
         }
@@ -50,16 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="icon" href="./../public/img/key-solid.svg">
-    <link rel="stylesheet" href="./css/default.css">
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="icon" href="./../../public/img/key-solid.svg">
+    <link rel="stylesheet" href="./../../public/css/default.css">
+    <link rel="stylesheet" href="./../../public/css/login.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Sidebar -->
     <?php
-    include("./../src/includes/sidebar.php");
+    include("./../includes/sidebar.php");
     ?>
 
     <main>

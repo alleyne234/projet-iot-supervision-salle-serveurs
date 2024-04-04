@@ -9,15 +9,15 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À Propos</title>
     <link rel="icon" href="./img/circle-info-solid.svg">
-    <link rel="stylesheet" href="./css/default.css">
-    <link rel="stylesheet" href="./css/about-us.css">
+    <link rel="stylesheet" href="./../../public/css/default.css">
+    <link rel="stylesheet" href="./../../public/css/about-us.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Sidebar -->
     <?php
-    include("./../src/includes/sidebar.php");
+    include("./../includes/sidebar.php");
     ?>
 
     <main>

@@ -3,11 +3,11 @@ session_start();
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ./../../../public/login.php');
+    header('Location: ./login.php');
     exit;
 }
 
-require_once("./../../../config/db.php");
+require_once("./../../config/db.php");
 
 $message = '';
 
@@ -68,16 +68,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nouveau utilisateur</title>
-    <link rel="icon" href="./../../../public/img/id-card-regular.svg">
-    <link rel="stylesheet" href="./../../../public/css/default.css">
-    <link rel="stylesheet" href="../../../public/css/register.css">
+    <link rel="icon" href="./../../public/img/id-card-regular.svg">
+    <link rel="stylesheet" href="./../../public/css/default.css">
+    <link rel="stylesheet" href="./../../public/css/register.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- Sidebar -->
     <?php
-    include("./../../includes/sidebar.php");
+    include("./../includes/sidebar.php");
     ?>
 
     <main>

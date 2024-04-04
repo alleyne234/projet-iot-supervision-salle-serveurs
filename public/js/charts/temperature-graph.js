@@ -46,7 +46,7 @@ function getBackgroundColorForTemperature(temperature, minTemperature, maxTemper
 
 
 function updateChart() {
-    fetch('./../../models/get_data.php')
+    fetch('./../models/get_data.php')
         .then(response => {
             // Vérification de la réponse de la requête
             if (!response.ok) {
