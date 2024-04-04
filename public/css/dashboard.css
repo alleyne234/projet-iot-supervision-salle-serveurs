@@ -28,6 +28,19 @@ h1 {
     margin: 15px 0 30px 15px;
 }
 
+.current-value {
+    flex-direction: column;
+}
+
+.current-value h3 {
+    color: var(--medium-gray);
+}
+
+.current-value h1 {
+    color: var(--white);
+    font-size: 60px;
+}
+
 /**************** RESPONSIVE ****************/
 @media only screen and (max-width: 1100px) {
     h1 {

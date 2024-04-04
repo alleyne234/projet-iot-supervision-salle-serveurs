@@ -31,8 +31,9 @@ session_start();
                         <canvas id="dashboard-temperature-graph"></canvas>
                     </div>
     
-                    <div class="graph temperature-graph">
-                        <canvas id="dashboard-temperature-gauge"></canvas>
+                    <div class="graph temperature-graph current-value">
+                        <h3>Température actuelle</h3>
+                        <h1 id="dashboard-current-temperature"></h1>
                     </div>
                 </div>
     
@@ -42,8 +43,9 @@ session_start();
                         <canvas id="dashboard-humidity-graph"></canvas>
                     </div>
     
-                    <div class="graph humidity-graph">
-                        <canvas id="dashboard-humidity-gauge"></canvas>
+                    <div class="graph humidity-graph current-value">
+                        <h3>Humidité actuelle</h3>
+                        <h1 id="dashboard-current-humidity"></h1>
                     </div>
                 </div>
             </div>
@@ -52,8 +54,7 @@ session_start();
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="./../../public/js/charts/temperature-graph.js"></script>
-    <script type="module" src="./../../public/js/charts/temperature-gauge.js"></script>
     <script type="module" src="./../../public/js/charts/humidity-graph.js"></script>
-    <script type="module" src="./../../public/js/charts/humidity-gauge.js"></script>
+    <script src="./../../public/js/update-current-values.js"></script>
 </body>
 </html>
