@@ -11,8 +11,8 @@ function updateCurrentValues() {
         })
         .then(data => {
             // Mettre à jour les valeurs de température et d'humidité avec les données reçues
-            document.getElementById("dashboard-current-temperature").innerText = data.temperature;
-            document.getElementById("dashboard-current-humidity").innerText = data.humidite;
+            document.getElementById("dashboard-current-temperature").innerText = data.temperature + "°C";
+            document.getElementById("dashboard-current-humidity").innerText = data.humidite + "%";
         })
         .catch(error => {
             console.error("Erreur lors de la récupération des données : " + error.message);
