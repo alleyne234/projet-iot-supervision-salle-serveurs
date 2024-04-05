@@ -28,6 +28,17 @@ if (!isset($_SESSION['user_id'])) {
 
     <main>
         <div class="dashboard-container">
+            <!-- Notifications -->
+            <div id="notifications">
+                <div id="temperature-warning" class="alert warning hide-notification">
+                    <span class="alert-text"></span>
+                </div>
+
+                <div id="humidity-warning" class="alert warning hide-notification">
+                    <span class="alert-text"></span>
+                </div>
+            </div>
+
             <h1>Valeurs DHT11</h1>
             
             <div class="graph-container">
