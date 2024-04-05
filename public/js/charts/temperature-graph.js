@@ -93,5 +93,4 @@ function updateChart() {
 }
 
 updateChart();
-
-setInterval(updateChart, 6000);
+setInterval(updateChart, 60000);

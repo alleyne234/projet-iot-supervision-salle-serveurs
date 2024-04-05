@@ -58,5 +58,4 @@ function updateChart() {
 }
 
 updateChart();
-
-setInterval(updateChart, 5000);
+setInterval(updateChart, 60000);
