@@ -30,7 +30,7 @@ session_start();
             <!-- Members -->
             <h3 class="about-us-members">Membres de l'équipe</h3>
             <p>- BOUTABA Ianice</p>
-            <p>- KONIECZKOWICZ Raphael</p>
+            <p>- KONIECZKOWICZ Raphaël</p>
             <p>- WAUQUIER Alexandre</p>
         </div>
     </main>
