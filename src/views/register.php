@@ -28,8 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
         $is_admin = isset($_POST['is-admin']) ? 1 : 0;
 
-        // Vérification des exigences pour les identifiants
-        if (!validate_username($username)) {
+        // Requête SQL pour la vérification de la présence d'un nom d'utilisateur identique
+        $sql_check_username_exists = "SELECT COUNT(*) FROM users WHERE username = :username";
+        $stmt_check_username_exists = $dbh->prepare($sql_check_username_exists);
+        $stmt_check_username_exists->execute(['username' => $username]);
+        $username_count = $stmt_check_username_exists->fetchColumn();
+
+        // Vérification de la présence d'un nom d'utilisateur identique et des exigences pour les identifiants
+        if ($username_count > 0) {
+            $message = '<p style="color:red">Ce nom d\'utilisateur est déjà utilisé. Veuillez choisir un autre nom d\'utilisateur.</p>';
+        } elseif (!validate_username($username)) {
             $message = '<p style="color:red">Le nom d\'utilisateur doit répondre aux exigences suivantes :<br>
             - Avoir entre 4 et 30 caractères<br>
             - Peut contenir des lettres, des chiffres<br>
