@@ -1,4 +1,5 @@
 <?php
+// Démarrage de la session
 session_start();
 ?>
 
@@ -15,19 +16,19 @@ session_start();
 </head>
 
 <body>
-    <!-- Sidebar -->
+    <!-- Inclusion de la barre latérale -->
     <?php
     include("./../includes/sidebar.php");
     ?>
 
     <main>
         <div class="about-us-container">
-            <!-- About the project -->
+            <!-- Section sur le projet -->
             <h3>À propos du projet</h3>
             <p>Le projet consiste à développer un système de surveillance environnementale pour la salle de serveurs de l'entreprise Nomios,
                 afin de garantir des conditions optimales de fonctionnement pour l'équipement informatique.</p>
 
-            <!-- Members -->
+            <!-- Section sur les membres -->
             <h3 class="about-us-members">Membres de l'équipe</h3>
             <p>- BOUTABA Ianice</p>
             <p>- KONIECZKOWICZ Raphaël</p>

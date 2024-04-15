@@ -1,5 +1,7 @@
+// Récupération de l'élément canvas pour dessiner le graphique d'humidité
 const ctx = document.getElementById('dashboard-humidity-graph');
 
+// Initialisation du graphique d'humidité Chart.js
 const graph = new Chart(ctx, {
     type: 'line',
     data: {
@@ -26,7 +28,9 @@ const graph = new Chart(ctx, {
 });
 
 
+// Fonction pour mettre à jour le graphique d'humidité
 function updateChart() {
+    // Requête GET pour récupérer les données de l'humidité depuis la base de données
     fetch('./../models/get_data.php')
         .then(response => {
             // Vérification de la réponse de la requête
@@ -41,13 +45,13 @@ function updateChart() {
             let listTimestamp = [];
             let listHumidity = [];
             
-            // Récupération des données
+            // Récupération des données de l'humidité
             for (let i = 9; i >= 0; i--) {
                 listTimestamp.push(data[i].horodatage);
                 listHumidity.push(data[i].humidite);
             }
 
-            // Mise à jour du graphique
+            // Mise à jour du graphique avec les nouvelles données
             graph.data.labels = listTimestamp;
             graph.data.datasets[0].data = listHumidity;
             graph.update();
@@ -57,5 +61,8 @@ function updateChart() {
         });
 }
 
+// Appel de la fonction pour la première fois
 updateChart();
+
+// Mise à jour périodique des valeurs toutes les 60 secondes
 setInterval(updateChart, 60000);

@@ -1,7 +1,8 @@
 <?php
+// Démarrage de la session
 session_start();
 
-// Vérifier si l'utilisateur est connecté
+// Vérification de la connexion de l'utilisateur
 if (!isset($_SESSION['user_id'])) {
     header('Location: ./login.php');
     exit;
@@ -21,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-    <!-- Sidebar -->
+    <!-- Inclusion de la barre latérale -->
     <?php
     include("./../includes/sidebar.php");
     ?>
@@ -42,7 +43,7 @@ if (!isset($_SESSION['user_id'])) {
             <h1>Valeurs DHT11</h1>
             
             <div class="graph-container">
-                <!-- Temperature Charts -->
+                <!-- Graphique de température -->
                 <div class="temperature-container">
                     <div class="graph temperature-graph">
                         <canvas id="dashboard-temperature-graph"></canvas>
@@ -54,7 +55,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
     
-                <!-- Humidity Charts -->
+                <!-- Graphique d'humidité -->
                 <div class="humidity-container">
                     <div class="graph humidity-graph">
                         <canvas id="dashboard-humidity-graph"></canvas>
@@ -69,6 +70,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </main>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="./../../public/js/charts/temperature-graph.js"></script>
     <script type="module" src="./../../public/js/charts/humidity-graph.js"></script>

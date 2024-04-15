@@ -1,4 +1,5 @@
 <?php
+// Démarrage de la session
 session_start();
 
 // Inclusion du fichier de configuration de la base de données
@@ -13,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username = htmlspecialchars($_POST['username']);
 
-        // Requête SQL
+        // Requête SQL pour récupérer l'utilisateur correspondant au nom d'utilisateur saisi
         $sql = "SELECT * FROM users WHERE username = :username";
         $stmt = $dbh->prepare($sql);
         $stmt->execute(['username' => $username]);
@@ -51,15 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <!-- Sidebar -->
+    <!-- Inclusion de la barre latérale -->
     <?php
     include("./../includes/sidebar.php");
     ?>
 
     <main>
-                <div class="login-container">
+        <div class="login-container">
             <h2>Connexion</h2>
 
+            <!-- Formulaire de connexion -->
             <form action="login.php" method="post">
                 <div>
                     <label for="username">Nom d'utilisateur :</label>
@@ -75,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="submit" value="Se connecter">
                 </div>
 
+                <!-- Affichage du message d'erreur -->
                 <?php if (!empty($error_message)): ?>
                     <p style="color:red"><?= $error_message ?></p>
                 <?php endif; ?>

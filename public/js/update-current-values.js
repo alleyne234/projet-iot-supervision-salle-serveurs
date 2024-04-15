@@ -1,7 +1,10 @@
 temperatureWarning = document.getElementById("temperature-warning");
 humidityWarning = document.getElementById("humidity-warning");
 
+
+// Fonction pour mettre à jour les valeurs actuelles de température et d'humidité
 function updateCurrentValues() {
+    // Requête GET pour récupérer la dernière valeur de la base de données
     fetch("./../../src/models/get_last_value.php")
         .then(response => {
             // Vérification de la réponse de la requête
@@ -38,5 +41,8 @@ function updateCurrentValues() {
         });
 }
 
+// Appel de la fonction pour la première fois
 updateCurrentValues();
+
+// Mise à jour périodique des valeurs toutes les 60 secondes
 setInterval(updateCurrentValues, 60000);

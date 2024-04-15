@@ -1,5 +1,7 @@
+// Récupération de l'élément canvas pour dessiner le graphique de température
 const ctx = document.getElementById('dashboard-temperature-graph');
 
+// Initialisation du graphique de température Chart.js
 const graph = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -28,6 +30,7 @@ const graph = new Chart(ctx, {
 });
 
 
+// Fonction pour obtenir la couleur de fond en fonction de la température
 function getBackgroundColorForTemperature(temperature, minTemperature, maxTemperature) {
     const colors = [
         'rgba(54, 162, 235, 0.2)',  // Bleu
@@ -37,6 +40,7 @@ function getBackgroundColorForTemperature(temperature, minTemperature, maxTemper
         'rgba(255, 99, 132, 0.2)'   // Rouge
     ];
 
+    // Calcul de l'index de l'intervalle de température
     const temperatureRange = maxTemperature - minTemperature;
     const intervalSize = temperatureRange / colors.length + 0.001;
     const intervalIndex = Math.floor((temperature - minTemperature) / intervalSize);
@@ -45,6 +49,7 @@ function getBackgroundColorForTemperature(temperature, minTemperature, maxTemper
 }
 
 
+// Fonction pour mettre à jour le graphique de température
 function updateChart() {
     fetch('./../models/get_data.php')
         .then(response => {
@@ -63,11 +68,12 @@ function updateChart() {
             let maxTemperature = -Infinity;
             let listBackgroundColor = [];
             
-            // Récupération des données
+            // Récupération des données de température
             for (let i = 9; i >= 0; i--) {
                 listTimestamp.push(data[i].horodatage);
                 listTemperature.push(data[i].temperature);
 
+                // Mise à jour des températures minimale et maximale
                 if (data[i].temperature < minTemperature) {
                     minTemperature = data[i].temperature;
                 }
@@ -77,11 +83,12 @@ function updateChart() {
                 }
             }
 
+            // Attribution des couleurs de fond des barres en fonction des températures
             for (let i = 9; i >= 0; i--) {
                 listBackgroundColor.push(getBackgroundColorForTemperature(data[i].temperature, minTemperature, maxTemperature));
             }
 
-            // Mise à jour du graphique
+            // Mise à jour du graphique avec les nouvelles données
             graph.data.labels = listTimestamp;
             graph.data.datasets[0].data = listTemperature;
             graph.data.datasets[0].backgroundColor = listBackgroundColor;
@@ -92,5 +99,8 @@ function updateChart() {
         });
 }
 
+// Appel de la fonction pour la première fois
 updateChart();
+
+// Mise à jour périodique des valeurs toutes les 60 secondes
 setInterval(updateChart, 60000);

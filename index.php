@@ -1,4 +1,5 @@
 <?php
+// Démarrage de la session
 session_start();
 ?>
 
@@ -20,7 +21,7 @@ session_start();
         <h3>Nomios</h3>
     </header>
 
-    <!-- Sidebar -->
+    <!-- Inclusion de la barre latérale -->
     <?php
     include("./src/includes/sidebar.php");
     ?>
