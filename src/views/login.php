@@ -8,11 +8,14 @@ require_once('./../../config/db.php');
 // Message d'erreur par défaut
 $error_message = '';
 
+$username = '';
+
 // Vérification que la requête est une méthode POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = htmlspecialchars($_POST['username']);
+
     // Vérification de la présence des identifiants
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
-        $username = htmlspecialchars($_POST['username']);
 
         // Requête SQL pour récupérer l'utilisateur correspondant au nom d'utilisateur saisi
         $sql = "SELECT * FROM users WHERE username = :username";
@@ -34,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error_message = "Mauvais identifiants";
         }
     } else {
-        $error_message = "Veuillez saisir un nom d\'utilisateur et un mot de passe.";
+        $error_message = "Veuillez saisir un nom d'utilisateur et un mot de passe.";
     }
 }
 ?>
@@ -65,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="login.php" method="post">
                 <div>
                     <label for="username">Nom d'utilisateur :</label>
-                    <input type="text" id="username" name="username" placeholder="username">
+                    <input type="text" id="username" name="username" value="<?php echo $username ?>" placeholder="username">
                 </div>
                 
                 <div>
