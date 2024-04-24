@@ -26,12 +26,16 @@ function validate_password($password) {
     return preg_match('/^[a-zA-Z0-9!"#$%&\'()*+,-.\/:;<=>?@[\\]^_`{|}~]{4,70}$/', $password);
 }
 
+$email = '';
+$username = '';
+
 // Vérification que la requête est une méthode POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+
     // Vérification de la présence des identifiants
     if (!empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $email = $_POST['email'];
-        $username = $_POST['username'];
         $password = $_POST['password'];
         $is_admin = isset($_POST['is-admin']) ? 1 : 0;
 
@@ -115,11 +119,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="register.php" method="post">
                 <div>
                     <label for="email">Adresse e-mail :</label>
-                    <input type="email" id="email" name="email" placeholder="email" required>
+                    <input type="email" id="email" name="email" value="<?php echo $email ?>" placeholder="email" required>
                 </div>
                 <div>
                     <label for="username">Nom d'utilisateur :</label>
-                    <input type="text" id="username" name="username" placeholder="username">
+                    <input type="text" id="username" name="username" value="<?php echo $username ?>" placeholder="username">
                 </div>
     
                 <div>
